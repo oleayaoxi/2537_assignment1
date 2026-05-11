@@ -1,0 +1,17 @@
+
+  <%- include('templates/header', { title, css }) %>
+<body>
+
+  <% if (!authenticated) { %>
+    <h1>Welcome</h1>
+    <button class="btn btn-info rounded-pill px-3" type="button"><a href="/signup">Sign up</a><br></button>
+    <button class="btn btn-outline-secondary rounded-pill" type="button"><a href="/login">Log in</a></button>
+  <% } else { %>
+    <h1>Hello, <%= name %>!</h1>
+   
+   <button class="btn btn-info rounded-pill px-3" type="button"><a href="/members">Go to Members Area</a><br></button>
+     <button class="btn btn-outline-secondary rounded-pill" type="button"><a href="/logout">Logout</a></button>
+  <% } %>
+
+  <%- include('templates/footer', { js }) %>
+

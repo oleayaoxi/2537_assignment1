@@ -1,0 +1,20 @@
+
+  <%- include('templates/header', { title: "Signup Error", css }) %>
+
+  <div class="container mt-4">
+    <h1>Signup Error</h1>
+
+    <% if (missingFields && missingFields.length > 0) { %>
+      <p>The missing field(s) are required:</p>
+      <ul>
+        <% missingFields.forEach(field => { %>
+          <li><%= field %></li>
+        <% }) %>
+      </ul>
+    <% } %>
+
+    <a href="/signup" class="btn btn-primary mt-3">Try Again</a>
+  </div>
+
+  <%- include('templates/footer', { js }) %>
+

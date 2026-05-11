@@ -1,0 +1,23 @@
+
+  <%- include('templates/header', { title: "Members Area", css }) %>
+
+  <div class="container py-4">
+    <h1 class="mb-4">Hello, <%= name %>.</h1>
+
+    <div class="row g-4">
+      <% images.forEach(img => { %>
+        <div class="col-12 col-md-4">
+          <div class="card shadow-sm">
+            <img src="/<%= img %>" class="card-img-top img-fluid" alt="Cat image">
+          </div>
+        </div>
+      <% }) %>
+    </div>
+
+    <div class="mt-4">
+      <a href="/logout" class="btn btn-info rounded-pill px-3">Sign out</a>
+      
+    </div>
+  </div>
+
+  <%- include('templates/footer', { js }) %>

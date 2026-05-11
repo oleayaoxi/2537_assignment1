@@ -1,0 +1,31 @@
+
+  <%- include('templates/header', { title: "Sign Up", css }) %>
+
+  <div class="container mt-4" style="max-width: 500px;">
+    <h1 class="mb-4 text-center">Sign Up</h1>
+
+    <form action="/signupSubmit" method="post" class="card p-4 shadow-sm">
+
+      <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input name="name" type="text" class="form-control" placeholder="name">
+
+
+        <label class="form-label">Email</label>
+        <input name="email" type="text" class="form-control" placeholder="email">
+      
+        <label class="form-label">Password</label>
+        <input name="password" type="password" class="form-control" placeholder="password">
+
+        <label class="form-label">Admin Code (optional)</label>
+        <input name="adminCode" type="password" class="form-control" placeholder="Enter admin code if you have one">
+      </div>
+
+      <button class="btn btn-primary w-100">Submit</button>
+    </form>
+  </div>
+
+  <%- include('templates/footer', { js }) %>
+
+
+
