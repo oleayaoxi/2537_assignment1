@@ -188,7 +188,7 @@ app.post("/loginSubmit", async (req, res) => {
 
   const result = await userCollection
     .find({ email })
-    .project({ name: 1, email: 1, password: 1 })
+    .project({ name: 1, email: 1, password: 1, user_type: 1 })
     .toArray();
 
   if (result.length !== 1) {
@@ -202,7 +202,11 @@ app.post("/loginSubmit", async (req, res) => {
   }
 
   req.session.authenticated = true;
-  req.session.user = { name: user.name, email: user.email };
+  req.session.user = {
+    name: user.name,
+    email: user.email,
+    user_type: user.user_type,
+  };
   req.session.cookie.maxAge = expireTime;
 
   res.redirect("/members");
@@ -329,6 +333,10 @@ app.get("/promote/:email", isAuthenticated, async (req, res) => {
     { $set: { user_type: "admin" } },
   );
 
+  if (req.session.user.email === email) {
+    req.session.user.user_type = "admin";
+  }
+
   res.redirect("/admin");
 });
 
@@ -347,6 +355,10 @@ app.get("/demote/:email", isAuthenticated, async (req, res) => {
     { email: email },
     { $set: { user_type: "user" } },
   );
+
+  if (req.session.user.email === email) {
+    req.session.user.user_type = "user";
+  }
 
   res.redirect("/admin");
 });
