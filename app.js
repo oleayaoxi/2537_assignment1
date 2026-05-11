@@ -215,7 +215,7 @@ app.post("/loginSubmit", async (req, res) => {
 // AUTH MIDDLEWARE
 function isAuthenticated(req, res, next) {
   if (req.session.authenticated) return next();
-  res.redirect("/");
+  res.redirect("/login");
 }
 
 //MEMBERS PAGE
